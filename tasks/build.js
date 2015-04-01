@@ -1,7 +1,7 @@
 var browserify = require('gulp-browserify');
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var livereload = require('gulp-livereload');
+//var livereload = require('gulp-livereload');
 
 gulp.task('build', function() {
   gulp.src(['src/client/'], {read: false})
@@ -13,7 +13,7 @@ gulp.task('build', function() {
     //   bundler.require('react');
     // })
     .pipe(rename('src.js'))
-    .pipe(gulp.dest('public/js/'))
+    .pipe(gulp.dest('public/js/'));
     // Reload browser via livereload plugin
-    .pipe(livereload());
+    //.pipe(livereload());
 });
