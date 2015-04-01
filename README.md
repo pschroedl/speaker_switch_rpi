@@ -1,4 +1,4 @@
-#slab
+#slab - slightly adjusted for deployment to a raspberry pi
 ## a development foundation
 
 * [Gulp] - Build automation in js
