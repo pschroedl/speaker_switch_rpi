@@ -1,8 +1,10 @@
-'use strict';
 
 var Hapi = require('hapi');
 var server = new Hapi.Server();
-server.connection({host: 'localhost', port : 8080});
+server.connection({host: '0.0.0.0', port : 8080});
+
+
+var speakers = require('./toggleSpeakers.js');
 
 var preHandler = function(request,next){
     console.log('Recieved request for : ' + JSON.stringify(request.url.path));
@@ -20,6 +22,15 @@ server.route({
                 index : true
             }
         }
+    }
+});
+
+server.route({
+    method: 'POST',
+    path: '/switch',
+    config: {
+        pre: [{ method : preHandler }],
+        handler: speakers.toggleSpeakerPower
     }
 });
 
