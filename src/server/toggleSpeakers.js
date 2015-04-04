@@ -3,7 +3,7 @@
 // handler calls toggleSpeakerPower
 // checks status, calls either subSpeakerOn or speakerSubOff
 
-// var GPIO = require('onoff').Gpio;
+var GPIO = require('onoff').Gpio;
 
 var Output = function(){
     this.state = 0;
@@ -20,12 +20,12 @@ Output.prototype.writeSync = function(val){
 var inProgress = 0; // debounce
 
 var speakers = {
-    // this.subwoofer = new GPIO(23, 'out');
-    // this.speakerLeft = new GPIO(24, 'out');
-    // this.speakerRight = new GPIO(25, 'out');
-    sub : new Output(23, 'out'),
-    left : new Output(24, 'out'),
-    right : new Output(25, 'out')
+    sub : new GPIO(23, 'out'),
+    left : new GPIO(24, 'out'),
+    right : new GPIO(25, 'out')
+    //sub : new Output(23, 'out'),
+    //left : new Output(24, 'out'),
+    //right : new Output(25, 'out')
 };
 
 var toggleSpeakerPower = function(request, reply){
