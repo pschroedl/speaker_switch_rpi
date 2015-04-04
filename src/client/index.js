@@ -6,8 +6,8 @@ var slateApp = {};
 slateApp.onReady = function() {
 	console.log('successfully loaded bundle.js');
 
-    $.post( "http://50.250.227.5/switch", function( data ) {
-      $( "#speaker_toggle_response" ).html( data );
+    $.post( "http://0.0.0.0:8080/switch", function( data ) {
+        $('#speaker_toggle_response').html('posted to switch.  response : ' + data.status);
     });
 };
 
