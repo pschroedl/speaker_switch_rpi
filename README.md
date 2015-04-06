@@ -16,9 +16,8 @@ home speakers ( in a specific order ) using a [Raspberry Pi] and a few [PowerSwi
 
 ###Structure
 |-- public/  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- bower_components/  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- js/  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--  bundle.js  *built via gulp browserify*  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--  src.js  *built via gulp browserify*  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- index.html  
 |-- src  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +-- client/  
@@ -39,15 +38,11 @@ And if they're not already globally available,
 ```
 npm install -g gulp
 ```
-Finish that all up with a quick
-```
-bower install
-```
 
 Build the source
 
 ```
-gulp
+gulp build
 ```
 
 Start the node server ( equivalent to nodemon src/server/index.js )
