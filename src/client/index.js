@@ -1,15 +1,66 @@
 'use strict';
 
 var $ = require('jquery');
-var slateApp = {};
+var React = require('react');
 
-slateApp.onReady = function() {
-	console.log('successfully loaded bundle.js');
+var StatusIndicator = React.createClass({
+    getInitialState : function() {
+        return {
+            status : 'Getting Status...'
+        };
+    },
+    render : function() {
+        return (
+            <div id="status_indicator">The Speakers are {this.props.status}</div>
+        );
+    }
+});
 
-    $.post( "http://0.0.0.0:8080/switch", function( data ) {
-        $('#speaker_toggle_response').html('posted to switch.  response : ' + data.status);
-    });
-};
+var ToggleSpeakerButton = React.createClass({
+    getInitialState : function() {
+        return {
+            status : ''
+        };
+    },
+    render : function() {
+        return (
+            <button id="toggle_button" onClick={this.props.toggleSpeakers}>Toggle Speaker Power !</button>
+        );
+    }
+});
 
-$(document).ready(slateApp.onReady);
-module.exports = slateApp;
+var SpeakerSwitcherApp = React.createClass({
+    getInitialState : function() {
+        return {
+            status : ''
+        };
+    },
+    componentDidMount : function() {
+        $.get('status', function(result) {
+            if (this.isMounted()) {
+                this.setState({
+                    status : result.status
+                });
+            }
+        }.bind(this));
+    },
+    ajaxToggleSpeakers : function(){
+        $.post('switch', function(result) {
+            if (this.isMounted()) {
+                this.setState({
+                    status : result.status
+                });
+            }
+        }.bind(this));
+    },
+    render : function() {
+      return (
+        <div>
+            <StatusIndicator status={this.state.status}/>
+            <ToggleSpeakerButton toggleSpeakers ={this.ajaxToggleSpeakers}/>
+        </div>
+      );
+    }
+});
+
+React.render(<SpeakerSwitcherApp/>, document.getElementById('main'));

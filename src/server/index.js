@@ -1,7 +1,7 @@
 
 var Hapi = require('hapi');
 var server = new Hapi.Server();
-server.connection({ host: '0.0.0.0', port : 8080 });
+server.connection({ host: '127.0.0.1', port : 8080 });
 
 
 var speakers = require('./toggleSpeakers.js');
