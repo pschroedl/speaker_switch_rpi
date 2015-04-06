@@ -4,11 +4,6 @@ var $ = require('jquery');
 var React = require('react');
 
 var StatusIndicator = React.createClass({
-    getInitialState : function() {
-        return {
-            status : 'Getting Status...'
-        };
-    },
     render : function() {
         return (
             <div id="status_indicator">The Speakers are {this.props.status}</div>
@@ -32,7 +27,7 @@ var ToggleSpeakerButton = React.createClass({
 var SpeakerSwitcherApp = React.createClass({
     getInitialState : function() {
         return {
-            status : ''
+            status : 'getting status ...'
         };
     },
     componentDidMount : function() {
@@ -45,6 +40,9 @@ var SpeakerSwitcherApp = React.createClass({
         }.bind(this));
     },
     ajaxToggleSpeakers : function(){
+        this.setState({
+            status : 'being toggled ...'
+        });
         $.post('switch', function(result) {
             if (this.isMounted()) {
                 this.setState({
