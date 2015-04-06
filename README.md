@@ -1,12 +1,17 @@
-#slab - slightly adjusted for deployment to a raspberry pi
-## a development foundation
+#Speaker_Switch_Rpi
+##A little exercise in full-stack development.
 
-* [Gulp] - Build automation in js
+A single button, and single status div for turning on and off my
+home speakers ( in a specific order ) using a [Raspberry Pi] and a few [PowerSwitch Tail II]s.
+
+##Stack
+* [React] - Hip new component based front-end framework du jour
+* [Node.js] and [Hapi] - NodeJS server and framework
+* [Gulp] - Task automation in js
 * [Browserify] - Client side CommonJS Modules and build transformations
 * [Bower] - Client side package management
 * [JSHint] and [JSCS] - static analysis that I've grown to love and hate
 * [liveReload] - support for auto reloading via browser plugin
-* [Node.js] and [Hapi] - NodeJS server and framework
 * [Mocha] and [Chai] - Test Framework and Assertion library
 
 ###Structure
@@ -33,7 +38,6 @@ npm install
 And if they're not already globally available,
 ```
 npm install -g gulp
-npm install -g bower
 ```
 Finish that all up with a quick
 ```
@@ -50,20 +54,13 @@ Start the node server ( equivalent to nodemon src/server/index.js )
 ```
 npm start
 ```
-Navigate to localhost:3000 to see 'Hello World' in its very own div and open your dev console to witness the glory of 'successfully loaded bundle.js'
+Navigate to localhost:8080 to see the status of the 'speakers' ( mocked for demonstration/development, 4 lines to uncomment, 3 to comment out in toggleSpeakers.js - todo: automate the code adjustments for production )
 
 Gulp tasks include :
-* 'test'
 * 'lint'
-* 'jscs'
 * 'build'
 and
-* 'watch'
-
-Run tasks individually, or, to watch for changes in src/ and automatically lint, jscs, test, and reload the browser, use :
-```
-gulp dev
-```
+* 'watch' ( default )
 
 ### Todo
  - Build basic REST endpoint, setup Sinon
@@ -76,6 +73,7 @@ gulp dev
 MIT
 
 **Free Software, Hell Yeah!**
+[React]:https://facebook.github.io/react/
 [Browserify]:http://browserify.org
 [Bower]:http://bower.io
 [JSHint]:http://jshint.com
@@ -87,3 +85,5 @@ MIT
 [Gulp]:http://gulpjs.com
 [Mocha]:http://mochajs.org
 [Chai]:/http://chaijs.com
+[PowerSwitch Tail II]:/http://www.powerswitchtail.com
+[Raspberry Pi]:/http://www.raspberrypi.org

@@ -6,7 +6,7 @@ var reactify = require('reactify');
 var path = {
   JS : 'src.js',
   DEST_BUILD : 'public/js/',
-  ENTRY_POINT : 'src/client/index.js'
+  ENTRY_POINT : './src/client/index.js'
 };
 
 gulp.task('build', function() {
