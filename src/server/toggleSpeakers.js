@@ -7,7 +7,7 @@
 */
 
 /* Uncomment below to use real Rpi GPIO */
-var GPIO = require('onoff').Gpio;
+//var GPIO = require('onoff').Gpio;
 
 
 /* Mock GPIO objects for testing/building
@@ -26,14 +26,14 @@ Output.prototype.writeSync = function(val){
 
 var speakers = {
     // /* Uncomment below to use real Rpi GPIO */
-    sub : new GPIO(23, 'out'),
-    left : new GPIO(24, 'out'),
-    right : new GPIO(25, 'out'),
+    // sub : new GPIO(23, 'out'),
+    // left : new GPIO(24, 'out'),
+    // right : new GPIO(25, 'out'),
     /* Use definitions below for testing/building
      on non-pi hardware */
-    // sub : new Output(23, 'out'),
-    // left : new Output(24, 'out'),
-    // right : new Output(25, 'out'),
+    sub : new Output(23, 'out'),
+    left : new Output(24, 'out'),
+    right : new Output(25, 'out'),
     /* only one command at a time!
        also, maybe add a 'lock' feature on the site? */
     available : true

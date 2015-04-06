@@ -1,19 +1,20 @@
-var browserify = require('gulp-browserify');
 var gulp = require('gulp');
-var rename = require('gulp-rename');
-//var livereload = require('gulp-livereload');
+var source = require('vinyl-source-stream');
+var browserify = require('browserify');
+var reactify = require('reactify');
+
+var path = {
+  JS : 'src.js',
+  DEST_BUILD : 'public/js/',
+  ENTRY_POINT : 'src/client/index.js'
+};
 
 gulp.task('build', function() {
-  gulp.src(['src/client/'], {read: false})
-    .pipe(browserify({
-      debug: true
-    }))
-    // .on('prebundle', function(bundler) {
-    //   // expose modules like React externally for dev tools
-    //   bundler.require('react');
-    // })
-    .pipe(rename('src.js'))
-    .pipe(gulp.dest('public/js/'));
-    // Reload browser via livereload plugin
-    //.pipe(livereload());
+    browserify({
+        entries : [path.ENTRY_POINT],
+        transform : [reactify]
+    })
+    .bundle()
+    .pipe(source(path.JS))
+    .pipe(gulp.dest(path.DEST_BUILD));
 });
