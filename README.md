@@ -1,8 +1,9 @@
 #Speaker_Switch_Rpi
-##A little exercise in full-stack development.
-
 A single button, and single status div for turning on and off my
-home speakers ( in a specific order ) using a [Raspberry Pi] and a few [PowerSwitch Tail II]s.
+KRK Rokit 8's/S-10 powered monitors and sub ( in a specific order ) using a [Raspberry Pi] and a few [PowerSwitch Tail II]s.
+
+##Motivation
+Speakers and associated amplifiers and mixers should be turned on and off in a specific order to avoid voltage spikes which result in a large 'pop' and potential damage ( In this case, on: sub->speakers. off: speakers->sub ).  Its also a huge pain to have to climb under, over, and around to flip a handfull of switches multiple times a day  - and so much cooler to do it from a bookmark on my phone.
 
 ##Stack
 * [React] - Hip new component based front-end framework du jour
